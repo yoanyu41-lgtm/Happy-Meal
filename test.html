@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="km" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Meal - ហាងកុម្ម៉ង់ម្ហូបអនឡាញឈ្ងុយឆ្ងាញ់</title>
+    
+    <!-- Google Fonts & Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/css/style.css?v=1782053180">
+</head>
+<body>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="http://127.0.0.1:8000" class="logo">
+                <span class="material-icons-round" style="color: var(--primary-color);">restaurant</span>
+                <span>Happy Meal</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="http://127.0.0.1:8000" class="nav-link active">បញ្ជីមុខម្ហូប</a></li>
+                            </ul>
+            
+            <div class="nav-actions">
+                <!-- Language Switcher -->
+                <div class="language-selector-container">
+                    <span class="material-icons-round" style="font-size: 1.15rem; color: var(--text-secondary);">language</span>
+                    <select id="language-switcher" class="font-select" onchange="window.location.href='http://127.0.0.1:8000/lang/' + this.value" aria-label="ជ្រើសរើសភាសា">
+                        <option value="km" selected>ខ្មែរ (KM)</option>
+                        <option value="en" >English (EN)</option>
+                    </select>
+                </div>
+
+                <!-- Font Selector -->
+                <div class="font-selector-container">
+                    <span class="material-icons-round" style="font-size: 1.15rem; color: var(--text-secondary);">font_download</span>
+                    <select id="font-switcher" class="font-select" aria-label="ជ្រើសរើសពុម្ពអក្សរ">
+                        <option value="modern">Modern</option>
+                        <option value="classic">Classic</option>
+                        <option value="clean">Clean</option>
+                    </select>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <button class="theme-btn" id="theme-toggle" aria-label="ប្តូរពណ៌ផ្ទៃក្រោយ">
+                    <span class="material-icons-round" id="theme-icon">light_mode</span>
+                </button>
+                
+                
+                                    <a href="http://127.0.0.1:8000/login" style="display:flex; align-items:center; gap:0.4rem; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.25); border-radius:20px; padding:0.4rem 0.8rem; color:var(--primary-color); font-size:0.85rem; font-weight:600; text-decoration:none; transition:all 0.2s;">
+                        <span class="material-icons-round" style="font-size:1.05rem;">login</span>
+                        ចូលប្រើ
+                    </a>
+                
+                <!-- Cart Button -->
+                <a href="http://127.0.0.1:8000/cart" class="cart-btn" aria-label="កន្ត្រកកុម្ម៉ង់">
+                    <span class="material-icons-round">shopping_cart</span>
+                                                        </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container" style="min-height: calc(100vh - 220px); padding-top: 2rem;">
+        <!-- Alert Messages -->
+        
+        
+            <!-- Hero Header -->
+    <header class="hero">
+        <h1>កុម្ម៉ង់ម្ហូបឆ្ងាញ់ៗក្តៅៗជាមួយ <span>Happy Meal</span></h1>
+        <p>យើងខ្ញុំមានលក់ម្ហូបអាហារខ្មែរប្រពៃណី ឈ្ងុយឆ្ងាញ់ អនាម័យខ្ពស់ និងដឹកជញ្ជូនរហ័សទាន់ចិត្តជូនដល់ទីកន្លែង!</p>
+        <a href="#catalog" class="btn btn-primary">
+            <span>កុម្ម៉ង់ឥឡូវនេះ</span>
+            <span class="material-icons-round">arrow_forward</span>
+        </a>
+    </header>
+
+    <!-- Catalog Section -->
+    <section id="catalog" style="scroll-margin-top: 100px;">
+        <h2 style="font-size: 1.85rem; font-weight: 700; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span class="material-icons-round" style="color: var(--primary-color);">restaurant_menu</span>
+            <span>មុខម្ហូបលេចធ្លោប្រចាំហាង</span>
+        </h2>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <span class="material-icons-round search-icon">search</span>
+            <input type="text" id="search-input" class="search-input" placeholder="ស្វែងរកមុខម្ហូប..." aria-label="Search" autocomplete="off">
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="categories-filter-container">
+            <button class="category-tab-btn active" data-category="all">
+                <span class="material-icons-round">all_inclusive</span>
+                <span>ទាំងអស់</span>
+            </button>
+            <button class="category-tab-btn" data-category="breakfast">
+                <span class="material-icons-round">breakfast_dining</span>
+                <span>អាហារពេលព្រឹក</span>
+            </button>
+            <button class="category-tab-btn" data-category="alacarte">
+                <span class="material-icons-round">restaurant</span>
+                <span>អាឡាកាត</span>
+            </button>
+            <button class="category-tab-btn" data-category="night">
+                <span class="material-icons-round">nightlife</span>
+                <span>អាហារពេលយប់</span>
+            </button>
+            <button class="category-tab-btn" data-category="drinks">
+                <span class="material-icons-round">local_bar</span>
+                <span>ភេសជ្ជៈ</span>
+            </button>
+        </div>
+        
+        <div class="products-grid">
+                            <div class="product-card" data-category="alacarte">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="អាម៉ុកត្រី (Fish Amok)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/1" class="product-name">អាម៉ុកត្រី (Fish Amok)</a>
+                        <p class="product-desc">ម្ហូបប្រពៃណីខ្មែរដ៏ល្បីល្បាញ ធ្វើពីសាច់ត្រីស្រស់ចំហុយជាមួយគ្រឿងសម្លខ្មែរ ខ្ទិះដូង និងស្លឹកញរ ខ្ចប់ក្នុងស្លឹកចេកយ៉ាងមានសោភ័ណភាព និងរសជាតិឈ្ងុយឆ្ងាញ់។ (Traditional Khmer steamed fish curry in banana leaf, rich in coconut cream and local spices.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$6.50</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="1">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="alacarte">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="ឡុកឡាក់សាច់គោ (Beef Lok Lak)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/2" class="product-name">ឡុកឡាក់សាច់គោ (Beef Lok Lak)</a>
+                        <p class="product-desc">សាច់គោផុយៗឆាជាមួយទឹកជ្រលក់រសជាតិដិត ញ៉ាំជាមួយបាយក្តៅៗ អមដោយបន្លែស្រស់ៗដូចជា សាឡាត់ ប៉េងប៉ោះ ខ្ទឹមបារាំង និងទឹកជ្រលក់អំបិលម្រេចក្រូចឆ្មា។ (Stir-fried marinated tender beef cubes served with fresh vegetables, rice, and traditional lime-pepper dipping sauce.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$5.00</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="2">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="breakfast">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="នំបញ្ចុកសម្លខ្មែរ (Nom Banh Chok)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/3" class="product-name">នំបញ្ចុកសម្លខ្មែរ (Nom Banh Chok)</a>
+                        <p class="product-desc">នំបញ្ចុកស្រស់ស្រូបជាមួយសម្លប្រហើរត្រីបុក ខ្ទិះដូង ញ៉ាំជាមួយល្បោយបន្លែស្រស់ៗជាច្រើនមុខដូចជា ត្រយូងចេក ត្រសក់ ល្ពៅខ្ចី និងជីគ្រប់មុខ។ (Traditional Khmer rice noodles served with warm fish-based green curry broth and a rich variety of fresh local herbs and vegetables.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$3.50</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="3">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="breakfast">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="បាយសាច់ជ្រូក (Bai Sach Chrouk)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/4" class="product-name">បាយសាច់ជ្រូក (Bai Sach Chrouk)</a>
+                        <p class="product-desc">បាយក្តៅៗជាមួយសាច់ជ្រូកអាំងប្រឡាក់គ្រឿងឈ្ងុយឆ្ងាញ់ អមដោយជ្រក់ល្ហុង ត្រសក់ និងទឹកស៊ុបក្តៅឧណ្ហៗ ជារបបអាហារពេលព្រឹកដ៏ពេញនិយមបំផុតរបស់ជនជាតិខ្មែរ។ (Classic Cambodian breakfast featuring sweet marinated grilled pork over warm broken rice, served with pickled vegetables and cucumber soup.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$2.50</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="4">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="night">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="មីឆាខ្មែរ (Khmer Fried Noodles)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/5" class="product-name">មីឆាខ្មែរ (Khmer Fried Noodles)</a>
+                        <p class="product-desc">មីឆាជាមួយសាច់គោ បន្លែស្រស់ៗ និងពងទាចៀនពីលើ រសជាតិឈ្ងុយឆ្ងាញ់ ល្អបំផុតសម្រាប់ការញ៉ាំពេលល្ងាច ឬពេលយប់។ (Classic Cambodian stir-fried noodles with beef, fresh greens, topped with a fried egg, perfect for late night cravings.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$2.50</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="5">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="night">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="ស៊ុបសាច់គោ (Khmer Beef Soup)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/6" class="product-name">ស៊ុបសាច់គោ (Khmer Beef Soup)</a>
+                        <p class="product-desc">ស៊ុបសាច់គោស្លឹកក្រសាំងក្តៅៗ មានរសជាតិជូរអែមដិតឈ្ងុយ ញ៉ាំជាមួយបន្លែ និងសាច់គោទន់ៗ ល្អបំផុតសម្រាប់ពេលល្ងាច។ (Warm, savory and sour Khmer beef soup cooked with local herbs and tender beef, ideal for dinner.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$4.50</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="6">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="drinks">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="តែបៃតងដោះគោទឹកកក (Iced Green Milk Tea)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/7" class="product-name">តែបៃតងដោះគោទឹកកក (Iced Green Milk Tea)</a>
+                        <p class="product-desc">តែបៃតងឆុងជាមួយទឹកដោះគោខាប់ និងទឹកកក រសជាតិផ្អែមមុត ត្រជាក់ចិត្ត និងបំបាត់ភាពក្តៅ។ (Rich, sweet iced green milk tea, a refreshing local drink.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$1.80</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="7">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="drinks">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="ទឹកអំពៅស្រស់ (Fresh Sugarcane Juice)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/8" class="product-name">ទឹកអំពៅស្រស់ (Fresh Sugarcane Juice)</a>
+                        <p class="product-desc">ទឹកអំពៅច្របាច់ថ្មីៗត្រជាក់ចិត្ត រសជាតិផ្អែមស្រទន់បែបធម្មជាតិ។ (Freshly squeezed sugarcane juice served with ice, sweet and natural.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$1.00</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="8">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="breakfast">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="គុយទាវភ្នំពេញ (Phnom Penh Noodle Soup)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/9" class="product-name">គុយទាវភ្នំពេញ (Phnom Penh Noodle Soup)</a>
+                        <p class="product-desc">គុយទាវសរសៃតូចស្រូបទឹកស៊ុបឆ្អឹងជ្រូកផ្អែមឈ្ងុយ អមដោយប្រហិតត្រី សាច់ជ្រូកចិញ្ច្រាំ ថ្លើម និងបង្គាស្រស់ ជានិមិត្តរូបនៃអាហារពេលព្រឹករបស់ខ្មែរ។ (Iconic Phnom Penh rice noodle soup featuring a rich pork bone broth, topped with minced pork, shrimp, meatballs, and fresh herbs.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$3.80</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="9">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="alacarte">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="ឆាក្តៅសាច់មាន់ (Spicy Basil Chicken)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/10" class="product-name">ឆាក្តៅសាច់មាន់ (Spicy Basil Chicken)</a>
+                        <p class="product-desc">សាច់មាន់ឆាជាមួយម្ទេស ខ្ទឹមស ស្លឹកគ្រៃ និងស្លឹកកម្រះព្រៅ រសជាតិហឹរដិតឈ្ងុយឆ្ងាញ់ប្លែកមាត់ ញ៉ាំជាមួយបាយក្តៅៗ។ (Stir-fried spicy chicken with lemongrass, hot chilies, garlic, and wild holy basil, served hot.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$4.50</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="10">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="night">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="បុកល្ហុងខ្មែរ (Khmer Green Papaya Salad)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/11" class="product-name">បុកល្ហុងខ្មែរ (Khmer Green Papaya Salad)</a>
+                        <p class="product-desc">ល្ហុងបុកជាមួយកាពិ ទឹកត្រី ក្រូចឆ្មា ម្ទេស និងប្រហុកខ្មែរ អមដោយបង្គាក្រៀម និងសណ្តែកដី ល្អបំផុតសម្រាប់ការញ៉ាំលម្ហែពេលល្ងាច។ (Traditional green papaya salad pounded with chili, lime, fish sauce, dried shrimp, and peanuts, delivering a vibrant mix of flavors.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$3.00</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="11">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="drinks">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="កាហ្វេទឹកដោះគោទឹកកក (Iced Milk Coffee)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/12" class="product-name">កាហ្វេទឹកដោះគោទឹកកក (Iced Milk Coffee)</a>
+                        <p class="product-desc">កាហ្វេខ្មៅឆុងស្រស់ៗ លាយជាមួយទឹកដោះគោខាប់ និងទឹកកក មានរសជាតិឈ្ងុយដិត និងជួយឲ្យស្បាងស្បើយពីភាពងងុយគេង។ (Strong dark-roasted Cambodian coffee brewed and combined with sweet condensed milk over ice.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$1.50</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="12">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="product-card" data-category="drinks">
+                    <div class="product-image-wrapper">
+                                                    <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="ទឹកដូងខ្ចីស្រស់ (Fresh Young Coconut)">
+                                            </div>
+                    <div class="product-info">
+                        <a href="http://127.0.0.1:8000/products/13" class="product-name">ទឹកដូងខ្ចីស្រស់ (Fresh Young Coconut)</a>
+                        <p class="product-desc">ទឹកដូងផ្អែមត្រជាក់ចិត្តធម្មជាតិ បានមកពីផ្លែដូងខ្ចីចិតថ្មីៗ។ (Naturally sweet, hydrating, and chilled young coconut water served straight from the fruit.)</p>
+                        
+                        <div class="product-price-row">
+                            <span class="product-price">$1.20</span>
+                            
+                                                            <form action="http://127.0.0.1:8000/cart/add" method="POST">
+                                    <input type="hidden" name="_token" value="sq1IGFVHVIf75Bc71YGvbh936scbqYg3aYvzGTwE" autocomplete="off">                                    <input type="hidden" name="product_id" value="13">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem; border-radius: 50%; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;" aria-label="បន្ថែមទៅកន្ត្រក">
+                                        <span class="material-icons-round" style="font-size: 1.25rem;">add_shopping_cart</span>
+                                    </button>
+                                </form>
+                                                    </div>
+                    </div>
+                </div>
+                    </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <strong>Happy Meal</strong>.</p>
+        </div>
+    </footer>
+
+    <!-- Dark/Light Theme & Font Switcher Script -->
+    <script>
+        // Close user dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const dropdowns = document.querySelectorAll('.user-dropdown');
+            dropdowns.forEach(d => {
+                if (!d.previousElementSibling.contains(e.target) && !d.contains(e.target)) {
+                    d.classList.remove('open');
+                }
+            });
+        });
+        document.querySelectorAll('.user-dropdown').forEach(d => {
+            d.style.setProperty('display', 'none');
+        });
+        document.querySelectorAll('.user-dropdown.open').forEach(d => {
+            d.style.removeProperty('display');
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const fontSwitcher = document.getElementById('font-switcher');
+        const htmlElement = document.documentElement;
+        
+        // Load theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.textContent = 'light_mode';
+            } else {
+                themeIcon.textContent = 'dark_mode';
+            }
+        }
+
+        // Load font preference
+        const savedFont = localStorage.getItem('theme-font') || 'modern';
+        htmlElement.setAttribute('data-font', savedFont);
+        if (fontSwitcher) {
+            fontSwitcher.value = savedFont;
+            
+            fontSwitcher.addEventListener('change', (e) => {
+                const selectedFont = e.target.value;
+                htmlElement.setAttribute('data-font', selectedFont);
+                localStorage.setItem('theme-font', selectedFont);
+            });
+        }
+
+        // Auto remove alerts after 5 seconds
+        setTimeout(() => {
+            const successAlert = document.getElementById('success-alert');
+            const errorAlert = document.getElementById('error-alert');
+            if (successAlert) successAlert.style.display = 'none';
+            if (errorAlert) errorAlert.style.display = 'none';
+        }, 5000);
+    </script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.category-tab-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            const searchInput = document.getElementById('search-input');
+
+            let activeCategory = 'all';
+            let searchQuery = '';
+
+            function filterProducts() {
+                productCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const nameEl = card.querySelector('.product-name');
+                    const descEl = card.querySelector('.product-desc');
+                    
+                    const name = nameEl ? nameEl.textContent.toLowerCase() : '';
+                    const desc = descEl ? descEl.textContent.toLowerCase() : '';
+                    
+                    const matchesCategory = (activeCategory === 'all' || category === activeCategory);
+                    const matchesSearch = name.includes(searchQuery) || desc.includes(searchQuery);
+
+                    if (matchesCategory && matchesSearch) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Tab filtering
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    activeCategory = this.getAttribute('data-category');
+                    filterProducts();
+                });
+            });
+
+            // Search filtering
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    searchQuery = this.value.toLowerCase().trim();
+                    filterProducts();
+                });
+            }
+
+            // Run initial filter to set up state
+            filterProducts();
+        });
+    </script>
+</body>
+</html>
